@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    void *sensor;
+    int vibrations = 847;
+    float temperature = 73.6;
+    char status = 'W';
+
+    sensor = &vibrations;
+    printf("%d %p\n", *(int *)sensor, (void *)sensor);
+
+    sensor = &temperature;
+    printf("%.2f %p\n", *(float *)sensor, (void *)sensor);
+
+    sensor = &status;
+    printf("%c %p\n", *(char *)sensor, (void *)sensor);
+
+    if(*(char *)sensor == 'N')
+        printf("Normal");
+    else if(*(char *)sensor == 'W')
+        printf("Warning");
+    else
+        printf("Critical");
+
+    return 0;
+}
