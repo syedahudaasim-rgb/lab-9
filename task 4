@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int validatePIN(int storedPIN, int enteredPIN);
+
+int main() {
+    int storedPIN = 4729, entered, i;
+
+    for(i = 1; i <= 3; i++) {
+        printf("Enter PIN: ");
+        scanf("%d", &entered);
+
+        if(validatePIN(storedPIN, entered)) {
+            printf("Access granted. Welcome!");
+            break;
+        } else {
+            if(i < 3)
+                printf("Wrong PIN. Attempts left: %d\n", 3 - i);
+            else
+                printf("Card blocked. Contact your bank.");
+        }
+    }
+
+    return 0;
+}
+
+int validatePIN(int storedPIN, int enteredPIN) {
+    if(storedPIN == enteredPIN) return 1;
+    else return 0;
+}
